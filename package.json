@@ -1,0 +1,50 @@
+{
+  "name": "@ruffiano/async-iterable",
+  "version": "1.0.0",
+  "description": "",
+  "types": "lib/types/src/index.d.ts",
+  "main": "./lib/node/cjs.js",
+  "module": "./lib/node/esm.js",
+  "browser": "./lib/browser/esm.js",
+  "scripts": {
+    "build": "node scripts/build.js && tsc",
+    "build:watch": "node scripts/build.js",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch --notify",
+    "type-check": "tsc",
+    "lint": "eslint ./src --fix"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "esbuild": "~0.14.25",
+    "eslint": "~8.10.0",
+    "streaming-iterables": "~6.2.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "~4.6.2",
+    "@babel/runtime": "~7.17.2",
+    "ts-node": "^10.9.1",
+    "tslib": "~2.3.1"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "scripts",
+    "src",
+    "tests"
+  ],
+  "exports": {
+    ".": {
+      "browser": {
+        "require": "./lib/browser/cjs.cjs",
+        "import": "./lib/browser/esm.js"
+      },
+      "node": {
+        "require": "./lib/node/cjs.cjs",
+        "import": "./lib/node/esm.js"
+      }
+    }
+  }
+}

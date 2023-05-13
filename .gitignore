@@ -1,0 +1,46 @@
+node_modules
+dist/
+lib/
+build
+# swarm.key
+
+# Runtime data
+*.pid
+*.seed
+*.pid.lock
+
+# dotenv environment variables file
+.env
+
+# OS X temporary files
+.DS_Store
+
+### IPFS ###
+.ipfs
+.web3.sotage
+### VisualStudioCode ###
+.vscode
+
+#jetbraines
+.idea
+
+### Linux ###
+*~
+
+# Output of 'npm pack'
+*.tgz
+
+# Logs
+*.log
+npm-debug.log*
+
+coverage/
+
+.npmrc
+.npmignore
+
+.item/
+
+.env.web3.sotage
+.env.storage
+.env.*
