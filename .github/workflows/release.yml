@@ -41,6 +41,29 @@ jobs:
         scope: '@ruffiano'
     - run: npm install
     - run: npm run build
-    - run: npm publish
+    - name: Check package version
+      id: version-check
+      run: |
+        CURRENT_VERSION=$(node -p "require('./package.json').version")
+        LAST_VERSION=$(npm show @ruffiano/async-iterable version)
+        echo "::set-output name=current_version::$CURRENT_VERSION"
+        echo "::set-output name=last_version::$LAST_VERSION"
+    - name: Check if package version is higher
+      id: version-comparison
+      run: |
+        CURRENT_VERSION=$CURRENT_VERSION
+        LAST_VERSION=$LAST_VERSION
+        if [[ "$CURRENT_VERSION" != $(echo -e "$CURRENT_VERSION\n$LAST_VERSION" | sort -V | tail -n1) ]]; then
+          echo "::set-output name=version_higher::true"
+        else
+          echo "::set-output name=version_higher::false"
+    - name: Publish package
+      run: |
+        VERSION_HIGHER=$version_higher
+        if [[ "$VERSION_HIGHER" == "true" ]]; then
+          npm publish
+        else
+          echo "Package version is not higher. Publishing is rejected."
+        fi
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
