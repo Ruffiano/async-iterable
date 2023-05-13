@@ -2,15 +2,30 @@ name: Release package
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ main ]
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
+  quality:
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
         node-version: [16.x, 17.x, 18.x]
         os: [ubuntu-latest, windows-latest, macos-12]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        registry-url: https://npm.pkg.github.com/
+        scope: '@ruffiano'
+    - run: npm install
+    - run: npm test
+  
+  publish:
+    runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
     needs: [quality]
     permissions:
