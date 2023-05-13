@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "types": "lib/types/src/index.d.ts",
-  "main": "./lib/node/cjs.js",
-  "module": "./lib/node/esm.js",
-  "browser": "./lib/browser/esm.js",
+  "main": "./lib/node/cjs/cjs.js",
+  "module": "./lib/node/esm/esm.js",
+  "browser": "./lib/browser/esm/esm.js",
   "scripts": {
     "build": "node scripts/build.js && tsc",
     "build:watch": "node scripts/build.js",
@@ -27,18 +27,22 @@
     "ts-node": "^10.9.1",
     "tslib": "~2.3.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ruffiano/async-iterable.git"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
   "exports": {
     ".": {
       "browser": {
-        "require": "./lib/browser/cjs.cjs",
-        "import": "./lib/browser/esm.js"
+        "require": "./lib/browser/cjs/cjs.cjs",
+        "import": "./lib/browser/esm/esm.js"
       },
       "node": {
-        "require": "./lib/node/cjs.cjs",
-        "import": "./lib/node/esm.js"
+        "require": "./lib/node/cjs/cjs.cjs",
+        "import": "./lib/node/esm/esm.js"
       }
     }
   }
