@@ -7,6 +7,10 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 17.x, 18.x]
+        os: [ubuntu-latest, windows-latest, macos-12]
     if: ${{ github.ref == 'refs/heads/main' }}
     needs: [quality]
     permissions:
