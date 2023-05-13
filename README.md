@@ -1,5 +1,5 @@
 # async-iterable :parachute:
-:parachute:
+
 ## Install
 There are no dependencies.
 

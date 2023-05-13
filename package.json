@@ -30,11 +30,6 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "files": [
-    "scripts",
-    "src",
-    "tests"
-  ],
   "exports": {
     ".": {
       "browser": {
