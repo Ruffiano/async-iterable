@@ -45,7 +45,7 @@ jobs:
       id: version-check
       run: |
         CURRENT_VERSION=$(node -p "require('./package.json').version")
-        LAST_VERSION=$(npm show @ruffiano/async-iterable version || echo "")
+        LAST_VERSION=$(npm show @ruffiano/async-iterable version 2>/dev/null || echo "")
         echo "::set-output name=current_version::$CURRENT_VERSION"
         echo "::set-output name=last_version::$LAST_VERSION"
     - name: Check if package version is higher
