@@ -45,7 +45,7 @@ jobs:
       id: version-check
       run: |
         CURRENT_VERSION=$(node -p "require('./package.json').version")
-        LAST_VERSION=$(npm show @ruffiano/async-iterable version 2>/dev/null || echo "0")
+        LAST_VERSION=$(npm show @ruffiano/async-iterable version 2>/dev/null || echo "null")
         echo "::set-output name=current_version::$CURRENT_VERSION"
         echo "::set-output name=last_version::$LAST_VERSION"
     - name: Check if package version is higher
@@ -53,14 +53,15 @@ jobs:
       run: |
         CURRENT_VERSION=${{ steps.version-check.outputs.current_version }}
         LAST_VERSION=${{ steps.version-check.outputs.last_version }}
-        if [[ "$LAST_VERSION" == "0" || "$CURRENT_VERSION" != $(echo -e "$CURRENT_VERSION\n$LAST_VERSION" | sort -V | tail -n1) ]]; then
+        if [[ "$LAST_VERSION" == "null" || "$CURRENT_VERSION" != $(echo -e "$CURRENT_VERSION\n$LAST_VERSION" | sort -V | tail -n1) ]]; then
           echo "::set-output name=version_higher::true"
         else
           echo "::set-output name=version_higher::false"
     - name: Publish package
       run: |
         VERSION_HIGHER=${{ steps.version-comparison.outputs.version_higher }}
-        if [[ "$VERSION_HIGHER" == "true" ]]; then
+        LAST_VERSION=${{ steps.version-check.outputs.last_version }}
+        if [[ "$VERSION_HIGHER" == "true" && LAST_VERSION != "null"]]; then
           npm publish
         else
           echo "Package version is not higher. Publishing is rejected."
