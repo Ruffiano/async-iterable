@@ -65,4 +65,4 @@ jobs:
           else
             echo "Package version is not higher. Publishing is rejected."
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

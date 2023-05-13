@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ruffiano/async-iterable.git"
+    "url": "https://github.com/Ruffiano/async-iterable.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
