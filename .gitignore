@@ -37,12 +37,10 @@ npm-debug.log*
 coverage/
 
 .npmrc
-.npmignore
+
 
 .item/
 
 .env.web3.sotage
 .env.storage
 .env.*
-
-.npmrc
