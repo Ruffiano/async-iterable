@@ -50,17 +50,16 @@ jobs:
       run: |
         CURRENT_VERSION=${{ env.CURRENT_VERSION }}
         LAST_VERSION=${{ env.LAST_VERSION }}
-        if [[ "$LAST_VERSION" == "null" || "$CURRENT_VERSION" != $(echo -e "$CURRENT_VERSION\n$LAST_VERSION" | sort -V | tail -n1) ]]; then
+        if [[ "$LAST_VERSION" == 'null' || "$CURRENT_VERSION" != $(echo -e "$CURRENT_VERSION\n$LAST_VERSION" | sort -V | tail -n1) ]]; then
           echo "VERSION_HIGHER=true" >> $GITHUB_ENV
         else
           echo "VERSION_HIGHER=false" >> $GITHUB_ENV
     - name: Publish package
       run: |
         VERSION_HIGHER=${{ env.VERSION_HIGHER }}
-        LAST_VERSION=${{ env.LAST_VERSION }}
         if [[ "$VERSION_HIGHER" == "true" ]]; then
           npm publish
         else
-          echo "Package version is not higher. Publishing is rejected."
+          echo "Package version is not higher. Publishing is rejected. "
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
