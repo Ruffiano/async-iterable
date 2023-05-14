@@ -50,7 +50,7 @@ jobs:
       run: |
         CURRENT_VERSION=${{ env.CURRENT_VERSION }}
         LAST_VERSION=${{ env.LAST_VERSION }}
-        if [[ "$LAST_VERSION" == "null" || "$CURRENT_VERSION" != $(echo -e "$CURRENT_VERSION\n$LAST_VERSION" | sort -V | tail -n1) ]]; then
+        if [[ "$LAST_VERSION" == 'null' || "$CURRENT_VERSION" != $(echo -e "$CURRENT_VERSION\n$LAST_VERSION" | sort -V | tail -n1) ]]; then
           echo "VERSION_HIGHER=true" >> $GITHUB_ENV
         else
           echo "VERSION_HIGHER=false" >> $GITHUB_ENV
