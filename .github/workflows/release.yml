@@ -2,16 +2,18 @@ name: Release package
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   quality:
+
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         node-version: [16.x, 17.x, 18.x]
         os: [ubuntu-latest, windows-latest, macos-12]
-
+        
     steps:
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
@@ -22,7 +24,7 @@ jobs:
         scope: '@ruffiano'
     - run: npm install
     - run: npm test
-
+  
   publish:
     runs-on: ubuntu-latest
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -30,7 +32,7 @@ jobs:
     permissions:
       packages: write
       contents: read
-    steps:
+    steps: 
     - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
@@ -40,26 +42,6 @@ jobs:
         scope: '@ruffiano'
     - run: npm install
     - run: npm run build
-    - name: Check package version
-      id: version-check
-      run: |
-        echo "CURRENT_VERSION=$(node -p 'require(`./package.json`).version')" >> $GITHUB_ENV
-        echo "LAST_VERSION=$(npm show @ruffiano/async-iterable version 2>/dev/null || echo 'null')" >> $GITHUB_ENV
-    - name: Check if package version is higher
-      id: version-comparison
-      run: |
-        CURRENT_VERSION=${{ env.CURRENT_VERSION }}
-        LAST_VERSION=${{ env.LAST_VERSION }}
-        if [[ "$LAST_VERSION" == 'null' || "$LAST_VERSION" == null || "$CURRENT_VERSION" != $(echo -e "$CURRENT_VERSION\n$LAST_VERSION" | sort -V | tail -n1) ]]; then
-          echo "VERSION_HIGHER=true" >> $GITHUB_ENV
-        else
-          echo "VERSION_HIGHER=false" >> $GITHUB_ENV
-    - name: Publish package
-      run: |
-        VERSION_HIGHER=${{ env.VERSION_HIGHER }}
-        if [[ "$VERSION_HIGHER" == "true" ]]; then
-          npm publish
-        else
-          echo "Package version is not higher. Publishing is rejected. "
+    - run: npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
