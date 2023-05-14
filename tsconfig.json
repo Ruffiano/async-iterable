@@ -21,9 +21,6 @@
       "src/**/*"
     ],
     "exclude": [
-      "node_modules",
-      "lib",
-      "scripts",
-      "tests"
+      "node_modules"
     ]
 }

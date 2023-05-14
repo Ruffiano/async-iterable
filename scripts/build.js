@@ -37,12 +37,12 @@ const buildConfig = {
   }).catch(()=>process.exit(1))
 
 
-    // comonjs node
-    build({
-      ...buildConfig,
-      platform: 'node',
-      format: 'cjs',
-      target: 'node16',
-      outfile: 'lib/node/cjs/index.js',
-      tsconfig: './tsconfig.node.json'
-    }).catch(()=>process.exit(1))
+  // comonjs node
+  build({
+    ...buildConfig,
+    platform: 'node',
+    format: 'cjs',
+    target: 'node16',
+    outfile: 'lib/node/cjs/index.js',
+    tsconfig: './tsconfig.node.json'
+  }).catch(()=>process.exit(1))
