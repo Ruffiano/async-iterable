@@ -1,6 +1,6 @@
 import { IncomingEvents } from '../src';
 
-describe('IncomingEvents', () => {
+describe('IncomingEvents Test', () => {
   let incomingEvents: IncomingEvents<number>;
 
   beforeEach(() => {
