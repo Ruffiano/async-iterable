@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "types": "lib/types/src/index.d.ts",
-  "main": "./lib/node/cjs/cjs.js",
-  "module": "./lib/node/esm/esm.js",
-  "browser": "./lib/browser/esm/esm.js",
+  "main": "./lib/node/cjs/index.js",
+  "module": "./lib/node/esm/index.js",
+  "browser": "./lib/browser/esm/index.js",
   "scripts": {
     "build": "node scripts/build.js && tsc",
     "build:watch": "node scripts/build.js",
@@ -37,12 +37,12 @@
   "exports": {
     ".": {
       "browser": {
-        "require": "./lib/browser/cjs/cjs.cjs",
-        "import": "./lib/browser/esm/esm.js"
+        "require": "./lib/browser/cjs/index.js",
+        "import": "./lib/browser/esm/index.js"
       },
       "node": {
-        "require": "./lib/node/cjs/cjs.cjs",
-        "import": "./lib/node/esm/esm.js"
+        "require": "./lib/node/cjs/index.js",
+        "import": "./lib/node/esm/index.js"
       }
     }
   }
