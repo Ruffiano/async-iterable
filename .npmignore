@@ -1,2 +1,7 @@
 src/
 scripts/
+.github
+tests/
+examples
+jest.config.ts
+jest.config.js

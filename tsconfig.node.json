@@ -3,6 +3,6 @@
     "compilerOptions": {
         "module": "CommonJS",
         "outDir": "./lib/node",
-        "target": "ES2019",
+        "target": "es2015"
     }
 }

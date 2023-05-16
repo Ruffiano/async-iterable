@@ -1,4 +1,4 @@
-const { build } = require("esbuild");
+import { build } from "esbuild";
 
 const buildConfig = {
     entryPoints: ['src/index.ts'],
