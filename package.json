@@ -2,6 +2,7 @@
   "name": "@ruffiano/async-iterable",
   "version": "1.0.0",
   "description": "Async Iterable",
+  "type": "module",
   "types": "./lib/types/src/index.d.ts",
   "main": "./lib/node/cjs/index.js",
   "module": "./lib/node/esm/index.js",
