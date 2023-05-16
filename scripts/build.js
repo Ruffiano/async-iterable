@@ -4,7 +4,6 @@ const buildConfig = {
     entryPoints: ['src/index.ts'],
     bundle: true,
     sourcemap: true,
-    minify: true
   }
   // esm browser
   build({

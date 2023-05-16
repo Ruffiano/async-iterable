@@ -1,8 +1,8 @@
 {
   "name": "@ruffiano/async-iterable",
   "version": "1.0.0",
-  "description": "",
-  "types": "lib/types/src/index.d.ts",
+  "description": "Async Iterable",
+  "types": "./lib/types/src/index.d.ts",
   "main": "./lib/node/cjs/index.js",
   "module": "./lib/node/esm/index.js",
   "browser": "./lib/browser/esm/index.js",
@@ -37,10 +37,12 @@
   "exports": {
     ".": {
       "browser": {
+        "types": "./lib/types/index.d.ts",
         "require": "./lib/browser/cjs/index.js",
         "import": "./lib/browser/esm/index.js"
       },
       "node": {
+        "types": "./lib/types/index.d.ts",
         "require": "./lib/node/cjs/index.js",
         "import": "./lib/node/esm/index.js"
       }
