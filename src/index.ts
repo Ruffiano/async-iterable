@@ -38,6 +38,16 @@ export class IncomingEvents<T> {
   }
 }
 
+export function ascynResolver<T>(): [Promise<T>, Resolve<T>] {
+  let resolve:any;
+  const promise =
+    new Promise<T> ((resolveCallback) => {
+      resolve = resolveCallback;
+    });
+  if (resolve !== undefined) return [promise, resolve];
+  throw 'Resoleve Wrong, check if your function is async';
+}
+
 export * from './resolve-later.js';
 export * from './iterate-later.js';
 export * from './to-async-iterable.js';

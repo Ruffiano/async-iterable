@@ -1,6 +1,6 @@
 {
   "name": "@ruffiano/async-iterable",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Async Iterable",
   "type": "module",
   "types": "./lib/types/src/index.d.ts",
