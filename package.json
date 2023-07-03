@@ -1,12 +1,25 @@
 {
   "name": "@ruffiano/async-iterable",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Async Iterable",
-  "type": "module",
   "types": "./lib/types/src/index.d.ts",
   "main": "./lib/node/cjs/index.js",
   "module": "./lib/node/esm/index.js",
   "browser": "./lib/browser/esm/index.js",
+  "exports": {
+    ".": {
+      "browser": {
+        "types": "./lib/types/index.d.ts",
+        "require": "./lib/browser/cjs/index.js",
+        "import": "./lib/browser/esm/index.js"
+      },
+      "node": {
+        "types": "./lib/types/index.d.ts",
+        "require": "./lib/node/cjs/index.js",
+        "import": "./lib/node/esm/index.js"
+      }
+    }
+  },
   "scripts": {
     "build": "node scripts/build.js && tsc",
     "build:watch": "node scripts/build.js",
@@ -34,19 +47,5 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
-  },
-  "exports": {
-    ".": {
-      "browser": {
-        "types": "./lib/types/index.d.ts",
-        "require": "./lib/browser/cjs/index.js",
-        "import": "./lib/browser/esm/index.js"
-      },
-      "node": {
-        "types": "./lib/types/index.d.ts",
-        "require": "./lib/node/cjs/index.js",
-        "import": "./lib/node/esm/index.js"
-      }
-    }
   }
 }

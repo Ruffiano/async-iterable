@@ -38,7 +38,7 @@ export class IncomingEvents<T> {
   }
 }
 
-export function ascynResolver<T>(): [Promise<T>, Resolve<T>] {
+export function asyncResolver<T>(): [Promise<T>, Resolve<T>] {
   let resolve:any;
   const promise =
     new Promise<T> ((resolveCallback) => {
